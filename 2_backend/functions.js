@@ -1,45 +1,59 @@
+export const firstOfArray = (array) => {
+  return console.log("firstOfArray", array[0]);
+};
 
+export const allWithoutLast = (array) => {
+  const copyArray = [...array];
+  copyArray.pop();
+  return console.log("allWithoutLast", copyArray);
+};
 
-export const  firstOfArray= () => {
-    return (  );
-}
+export const lastOfArray = (array) => {
+  const copyArray = [...array];
+  const lastOne = copyArray.pop();
+  return console.log("lastOfArray", lastOne);
+};
 
-export const  allWithoutLast= () => {
-    return (  );
-}
+export const allWithoutFirst = (array) => {
+  const copyArray = [...array];
+  const firstOne = copyArray.shift();
+  return console.log("allWithoutFirst", copyArray);
+};
 
-export const  lastOfArray= () => {
-    return (  );
-}
+export const removeValueOfArray = (array, value) => {
+  const copyArray = [...array];
+  const arrayWithoutValue = copyArray.filter((item) => item !== value);
+  return console.log("removeValueOfArray", arrayWithoutValue);
+};
 
-export const  allWithoutFirst= () => {
-    return (  );
-}
+export const removeDuplicate = (array) => {
+  const uniq = [...new Set(array)];
+  return console.log("removeDuplicate", uniq);
+};
 
-export const  removeValueOfArray= (value) => {
-    return (  );
-}
+export const sumeAllArrayNumbers = (array) => {
+  const copyArray = [...array];
+  const result = copyArray.reduce((a, b) => a + b);
+  return console.log("sumeAllArrayNumbers", result);
+};
 
-export const  removeDuplicate= () => {
-    return (  );
-}
+export const randomNumberBetween = (a, b) => {
+  const random = Math.round(Math.random() * (b - a) + a);
+  //   console.log("randomNumberBetween", random);
+  return random;
+};
 
-export const  sumeAllArrayNumbers= () => {
-    return (  );
-}
- 
-export const  randomNumberBetween= (a,b) => {
-    return (  );
-}
+export const firstLetterUpercase = (string) => {
+  const firstLetter = string.charAt(0);
+  const newString = string.replace(firstLetter, firstLetter.toUpperCase());
+  return console.log("firstLetterUppercase", newString);
+};
 
-export const  firstLetterUpercase= (string) => {
-    return (  );
-}
+export const allLetterUpercase = (string) => {
+  const newString = string.toUpperCase();
+  return console.log("allLetterUpercase", newString);
+};
 
-export const  allLetterUpercase= (string) => {
-    return (  );
-}
-
-export const  sameLastLetter= (stringA, letter) => {
-    return (  );
-}
+export const sameLastLetter = (stringA, letter) => {
+  return console.log("sameLastLette", stringA.endsWith(letter));
+};
