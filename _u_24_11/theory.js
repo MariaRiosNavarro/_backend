@@ -344,6 +344,10 @@ fs.unlink("./myFolder/myFileSync.txt", (err) => {
   console.log("File Deleted Successfully!");
 });
 
+//#Delete folder use: fs.rm
+
+//# Beachte auch die Verwendung von { recursive: true }, um sicherzustellen, dass Unterordner und Dateien im Verzeichnis gelöscht bzw. erstellt werden können.
+
 //------------------------------------------------------------------------------------------------------------------------
 
 //Ok, before we move forward to learn the HTTP Module and create our own servers, it's important to know about something called "Event driven programming".
