@@ -59,4 +59,4 @@ console.log("BIN UNTEN IN DEN FILE");
 
 // https://nodejs.org/dist/latest-v20.x/docs/api/fs.html#file-system-flags
 
-// fs.writeFile('./geschichte', 'new new', {flag:''})
+// fs.writeFile('./geschichte', 'new new', {flag:'a'})
