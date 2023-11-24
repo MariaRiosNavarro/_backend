@@ -1,5 +1,4 @@
-import { error } from "console";
-import { data } from "./data.json";
+import data from "./data.json" assert { type: "json" };
 import fs from "fs";
 
 const path = "./data.txt";
@@ -7,7 +6,12 @@ const path = "./data.txt";
 data.forEach((element) => {
   fs.writeFile(
     path,
-    element.id + element.title + "\n" + element.description + "\n",
+    String(element.id) +
+      " - " +
+      String(element.title) +
+      "\n" +
+      String(element.description) +
+      "\n\n",
     { flag: "a" },
     (error) => {
       if (error) {
