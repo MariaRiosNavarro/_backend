@@ -88,12 +88,25 @@ if (fs.existsSync(file)) {
 //Erstelle eine Datei namens "Hello.txt" und trage dort einen beliebigen Text ein. Benenne die Datei anschließend in "HelloWorld.txt" um.
 
 const filePath = "./Hello.txt";
+const newPath = "./HelloWorld.txt";
 const textFile = "Irgendein Text";
 
 fs.writeFile(filePath, textFile, (err) => {
   if (err) {
     console.log("create file issue: ", err);
+    return;
   } else {
     console.log("New File created");
+  }
+});
+
+//rename
+
+fs.rename(filePath, newPath, (err) => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log("rename file");
   }
 });
