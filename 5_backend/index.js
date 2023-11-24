@@ -1,4 +1,5 @@
 import data from "./data.json" assert { type: "json" };
+//https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
 import fs from "fs";
 
 const path = "./data.txt";
