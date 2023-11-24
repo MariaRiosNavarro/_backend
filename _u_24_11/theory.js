@@ -1,7 +1,5 @@
 // https://www.freecodecamp.org/news/get-started-with-nodejs/
 
-// my tests
-
 // Types Of Modules in Node
 // There are 2 types of modules in NodeJS:
 
@@ -9,11 +7,15 @@
 // External Modules: These are modules created by other developers which are not included by default. So you need to install them first before using them.
 // Here is an image of popular built-in modules in NodeJS and what can you do using them:
 
-// Built In Modules:
-// OS,Provides inpormation about the operating system
-// PATH, Provides utility functions for working with file paths
-// FS, File System Operations like Reading & Writing Files
-// HTTP. Create HTTP Servers
+// #Built In Modules:
+// # -A------OS,Provides inpormation about the operating system
+// # -B------PATH, Provides utility functions for working with file paths
+// # -C------FS, File System Operations like Reading & Writing Files
+// # -D------HTTP. Create HTTP Servers
+
+//------------------------------------------------------------------------------------------------------------------------
+
+// # -A------OS,Provides inpormation about the operating system
 
 // !OS,Provides inpormation about the operating system
 
@@ -61,7 +63,9 @@ console.log("otherInfo", otherInfo);
 // os.uptime() tells the system uptime in seconds. This function returns the number of seconds the system has been running since it was last rebooted. If you check the first line of the output: 13667 is the number of seconds, my system has been running since it was last rebooted. Of course, it will be different for you.
 // os.userInfo() gives the information about the current user. This function returns an object with information about the current user including the user ID, group ID, username, home directory, and default shell. Below is the breakdown of the output in my case:
 
-// !The PATH Module
+//------------------------------------------------------------------------------------------------------------------------
+
+// # -B------PATH, Provides utility functions for working with file paths
 
 //The PATH module comes in handy while working with file and directory paths. It provides you with various methods with which you can:
 
@@ -135,7 +139,9 @@ console.log("path.sep is   ->", path.sep);
 // C:\Desktop\NodeJSTut\grandParentFolder\parentFolder\child.txt
 // The same is applicable to a macOS or a Linux user. It's just the difference in the absolute path of the present working directory and the path separator.
 
-// # The FS Module
+//------------------------------------------------------------------------------------------------------------------------
+
+// # -C------FS, File System Operations like Reading & Writing Files
 
 //This module helps you with file handling operations such as:
 
@@ -146,3 +152,204 @@ console.log("path.sep is   ->", path.sep);
 // Renaming a file
 // Watching for changes in a file, and much more
 // Let's perform some of these tasks to see the fs (File System) module in action below:
+
+//# ------------------How to create a directory using fs.mkdir()
+
+// It takes two arguments:
+// the path of the directory to be created and
+// an optional callback function that gets executed when the operation is complete.
+// The purpose of the callback function is to notify that the directory creation process has completed. This is necessary because the fs.mkdir() function is asynchronous
+
+import fs from "fs";
+
+fs.mkdir("./myFolder", (err) => {
+  if (err) {
+    console.log("error", err);
+  } else {
+    console.log("Folder created");
+  }
+});
+
+// # ------------------How to create and write to a file asynchronously using fs.writeFile()
+
+//After the myFolder directory is created successfully, it's time to create a file and write something to it by using the fs module.
+//There are basically 2 ways of doing this:
+
+//# Synchronous Approach: In this approach,
+// we create a file and write the data to it in a blocking manner,
+// which means that NodeJS waits for the creation and write operation
+// to complete before moving on to the next line of code.
+
+// If an error
+// occurs during this process, it throws an exception that must be
+// caught using try...catch.
+
+//# Asynchronous Approach: In this approach,
+// we create and write data to a file in a non-blocking manner,
+// which means that NodeJS does not wait for the write operation
+// to complete before moving on to the next line of code.
+
+// Instead, it takes a callback function that gets called once the entire
+// process is completed. If an error occurs during the write operation,
+// the error object is passed to the callback function.
+
+//#In this tutorial, we will be using the fs.writeFile() function which follows the asynchronous approach.
+
+//writeFile() is a method provided by the fs (file system) module in Node.js. It is used to write data to a file asynchronously.
+
+//#  The method takes three arguments:
+//#     The path of the file to write to (including the file name and extension)
+//#     The data to write to the file (as a string or buffer)
+//#     An optional callback function that is called once the write operation is complete or an error occurs during the write operation.
+
+// we imported before import fs from "fs";
+
+// const data = "Hi,this is newFile.txt";
+
+// fs.writeFile("./myFolder/myFile.txt", data, (err) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   } else {
+//     console.log("Writen to file successfully!");
+//   }
+// });
+
+//Since newFile.txt didn't exist previously, Hence the writeFile() function created this file for us on the provided path and then wrote the value in the data variable to the file. Suppose this file already existed. In that case, writeFile() will just open the file, erase all the existing text present in it and then write the data to it.
+
+//!The problem with this code is: when you run the same code multiple times, it erases the previous data that is already present in newFile.txt and writes the data to it.
+
+// In case you do not want the original data to get deleted and just want the new data to be added/appended at the end of the file, you need to make a little change in the above code by adding this "options object": {flag: 'a'} as the third parameter to writeFile() – like this:
+
+// we imported before import fs from "fs";
+
+const data = "Hi,this is newFile.txt";
+
+fs.writeFile("./myFolder/myFile.txt", data, { flag: "a" }, (err) => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log("Writen to file successfully!");
+  }
+});
+
+// # -------------------How to read a file asynchronously using fs.readFile()
+
+//Again there are 2 ways of doing this: Synchronous approach and the Asynchronous approach (just like the previous function). Here we are going to use the readFile() function provided by fs module which performs the reading operation asynchronously.
+//#The readFile() function takes 3 parameters:
+//#The path to the file which is to be read.
+//#The encoding of the file.
+//#The callback function that gets executed once the reading operation is completed or if any error occurs during the reading operation. It accepts 2 parameters: first parameter stores the file data (if read operation is successful) and the second parameter stores the error object (if read operation fails due to some error).
+
+// we imported before import fs from "fs";
+
+fs.readFile("./myFolder/myFile.txt", { encoding: "utf-8" }, (err, data) => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log("File read successfully! Here is the data");
+    console.log(data);
+  }
+});
+
+//!The encoding parameter in the fs.readFile() method of Node.js is used to specify the character encoding used to interpret the file data. By default, if no encoding parameter is provided, the method returns a raw buffer.
+//! If the readFile() method is called without providing an encoding parameter, you will see a result similar to this printed in the console:
+//! <Buffer 54 68 69 73 20 69 73 20 73 6f 6d 65 20 64 6.....>
+
+// #Other common encodings that can be used with readFile() include:
+
+// 'ascii': Interpret the file contents as ASCII-encoded text.
+// 'utf16le': Interpret the file contents as 16-bit Unicode text in little-endian byte order.
+// 'latin1': Interpret the file contents as ISO-8859-1 (also known as Latin-1) encoded text.
+
+//#We can remove the encoding und transform the Data to String like  console.log(String(data))
+
+//# ---------------Reading and Writing to a File Synchronously
+
+// Note that since these are synchronous operations, they need to be wrapped in a try...catch block. In case the operations fail for some reason, the errors thrown will be caught by the catch block.
+
+//In the below code, we first create a new file: ./myFolder/myFileSync.txt and write to it using the writeFileSync() method. Then we read the contents of the file using the readFileSync() method and print the data in the console:
+
+// -we imported before import fs from "fs";
+
+// try {
+//   // Write to file synchronously
+//   fs.writeFileSync("./myFolder/myFileSync.txt", "myFileSync says Hi");
+//   console.log("Write operation successful");
+
+//   // Read file synchronously
+//   const fileData = fs.readFileSync("./myFolder/myFileSync.txt", "utf-8");
+//   console.log("Read operation successful. Here is the data:");
+//   console.log(fileData);
+// } catch (err) {
+//   console.log("Error occurred!");
+//   console.log(err);
+// }
+
+//# -----------------How to read the contents of a directory using fs.readdir()
+
+// #The readdir() function accepts 2 parameters:
+
+// #The path of the folder whose contents are to be read.
+// #Callback function which gets executed once the operation is completed or if any error occurs during the operation. This function accepts 2 parameters: The first one which accepts the error object (if any error occurs) and the second parameter which accepts an array of the various files and folders present in the directory whose path has been provided.
+
+// -we imported before import fs from "fs";
+
+fs.readdir("./myFolder", (err, files) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log("Directory read successfully! Here are the files:");
+  console.log(files);
+});
+
+//# -------------------How to rename a file using fs.rename()
+
+// Here's the syntax for the fs.rename() method:
+
+// fs.rename(oldPath, newPath, callback);
+// where:
+
+// oldPath (string) - The current file path
+// newPath (string) - The new file path
+// callback (function) - A callback function to be executed when the renaming is complete. This function takes an error object as its only parameter.
+// Let's rename the newFile.txt file to newFileAsync.txt:
+
+// -we imported before import fs from "fs";
+
+fs.rename("./myFolder/myFile.txt", "./myFolder/newFileAsync.txt", (err) => {
+  if (err) {
+    console.log("rename issue", err);
+    return;
+  }
+  console.log("File renamed successfully!");
+});
+
+//# -------------------How to delete a file using fs.unlink()
+
+// #Last but not the least, we have the fs.unlink() function which is used to delete a file. It takes in 2 parameters:
+// #The path of the file which you want to delete, and
+// #The callback function which gets executed once the delete operation is over or if any error occurs during the operation
+
+// -we imported before import fs from "fs";
+
+fs.unlink("./myFolder/myFileSync.txt", (err) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log("File Deleted Successfully!");
+});
+
+//------------------------------------------------------------------------------------------------------------------------
+
+//Ok, before we move forward to learn the HTTP Module and create our own servers, it's important to know about something called "Event driven programming".
+
+//# -EXTRA: --------------------Event-Driven Programming
+
+//------------------------------------------------------------------------------------------------------------------------
+
+// # -D------HTTP. Create HTTP Servers
