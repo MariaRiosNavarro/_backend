@@ -1,19 +1,29 @@
 * {
-  background-color: rgb(198, 218, 192);
+  background-color: rgb(182, 237, 183);
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li {
-  list-style: none;
-}
-
-nav ul li a {
-  text-decoration: none;
+body {
+  padding: 1rem;
 }
 
 ul {
-  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
-nav ul li a::seleted {
-  background-color: green;
+li {
+  list-style: none;
+  border: 1px solid green;
+  padding: 0.5rem 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: green;
+}
+
+.selected {
+  color: violet;
 }

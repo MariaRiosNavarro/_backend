@@ -22,10 +22,12 @@ const requestHandler = (req, res) => {
     sendFile("./assets/contact.html", res);
   } else if (req.url === "/faq") {
     sendFile("./assets/faq.html", res);
+  } else if (req.url === "/main.css") {
+    sendFile("./assets/main.css", res);
   } else {
     res.end();
   }
 };
 
 const server = http.createServer(requestHandler);
-server.listen(9898, () => console.log("Server works"));
+server.listen(9899, () => console.log("Server works"));
