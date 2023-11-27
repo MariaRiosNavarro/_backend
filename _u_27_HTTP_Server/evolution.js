@@ -20,6 +20,8 @@ const requestHandler = (req, res) => {
     sendFile("./assets/index.html", res);
   } else if (req.url === "/about") {
     sendFile("./assets/about.html", res);
+  } else {
+    res.end();
   }
 };
 

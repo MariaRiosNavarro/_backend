@@ -1,0 +1,19 @@
+* {
+  background-color: rgb(198, 218, 192);
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+nav ul li a::seleted {
+  background-color: green;
+}
