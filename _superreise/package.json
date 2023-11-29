@@ -1,5 +1,5 @@
 {
-  "name": "_u_29_express",
+  "name": "_superreise",
   "version": "1.0.0",
   "type": "module",
   "description": "",
@@ -10,7 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "module": "type",
   "dependencies": {
     "express": "^4.18.2"
   }
