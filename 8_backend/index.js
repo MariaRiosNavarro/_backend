@@ -41,6 +41,29 @@ ramdomNumberBiggerTo6()
   .then((resolveResult) => console.log("Resolve Result is:", resolveResult))
   .catch((rejectResult) => console.log("Reject Result is: ", rejectResult));
 
+//-----------------3.1
+
+const asyncOperation = (number) => {
+  return new Promise((resolve, reject) => {
+    resolve(number * number);
+  });
+};
+
+const chainBuilder = (number) => {
+  return asyncOperation(number)
+    .then((result) => {
+      return asyncOperation(result);
+    })
+    .then((result) => {
+      return asyncOperation(result);
+    })
+    .then((result) => {
+      return asyncOperation(result);
+    });
+};
+
+chainBuilder(2);
+
 //---------------3.2 (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all?retiredLocale=de)
 
 //Verwendung von Promise.all:
