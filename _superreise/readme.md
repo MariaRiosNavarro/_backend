@@ -22,12 +22,20 @@ Passagiere: 300
 Reichweite : 500Km
 id: nummerschild von Flugzeug
 
-## To do
+## Todo
 
-[ ] Server Setup
+[x] Server Setup
 
-[ ] datei zum, speichern anlegen
+[x] datei zum, speichern anlegen
 
-[ ] datei auslesen
+[x] datei auslesen
 
-[ ] datei erweitern
+[x] datei erweitern
+
+# More
+
+Löschen von Flugzeugen anhand der flugzeug id werden wir löschen
+
+Bearbeiten von Flugzeugen anhand der id
+
+ausgabe von nur einem bestimmten flugzeug anhand der id
